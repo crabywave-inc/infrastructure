@@ -19,7 +19,7 @@ subscriptions = {
     exactly_once_delivery = false
     expiration_policy     = "31536000s"
   },
-  "members-created-role" = {
+  "member-created-role" = {
     topic_name            = "members-created"
     delivery_type         = "PULL"
     ack_deadline_seconds  = "60"
