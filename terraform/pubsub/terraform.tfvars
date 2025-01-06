@@ -6,7 +6,8 @@ topics = [
   "roles-created",
   "members-created",
   "member-roles-added",
-  "member-roles-removed"
+  "member-roles-removed",
+  "guild-created",
 ]
 
 subscriptions = {
@@ -45,5 +46,14 @@ subscriptions = {
     message_ordering      = false
     exactly_once_delivery = false
     expiration_policy     = "31536000s"
-  }
+  },
+  # "guild-created-member" = {
+  #   topic_name            = "guilds-created"
+  #   delivery_type         = "PULL"
+  #   ack_deadline_seconds  = "60"
+  #   retention_duration    = "604800s"
+  #   message_ordering      = false
+  #   exactly_once_delivery = false
+  #   expiration_policy     = "31536000s"
+  # },
 }
