@@ -18,8 +18,8 @@ locals {
 module "role-service" {
   source = "./modules"
 
-  region     = var.region
-  project_id = var.project_id
+  region      = var.region
+  project_id  = var.project_id
   environment = var.environment
 
   service_name = "role-service"
@@ -28,11 +28,20 @@ module "role-service" {
 module "auth-service" {
   source = "./modules"
 
-  region     = var.region
-  project_id = var.project_id
+  region      = var.region
+  project_id  = var.project_id
   environment = var.environment
 
   service_name = "auth-service"
+}
+
+module "guild-service" {
+  source      = "./modules"
+  region      = var.region
+  project_id  = var.project_id
+  environment = var.environment
+
+  service_name = "guild-service"
 }
 
 # resource "google_cloudbuild_trigger" "cloudbuild" {

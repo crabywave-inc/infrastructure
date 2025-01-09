@@ -8,6 +8,7 @@ topics = [
   "member-roles-added",
   "member-roles-removed",
   "guild-created",
+  "guild-deleted",
 ]
 
 subscriptions = {
@@ -47,13 +48,31 @@ subscriptions = {
     exactly_once_delivery = false
     expiration_policy     = "31536000s"
   },
-  # "guild-created-member" = {
-  #   topic_name            = "guilds-created"
-  #   delivery_type         = "PULL"
-  #   ack_deadline_seconds  = "60"
-  #   retention_duration    = "604800s"
-  #   message_ordering      = false
-  #   exactly_once_delivery = false
-  #   expiration_policy     = "31536000s"
-  # },
+  "guild-created-member" = {
+    topic_name            = "guild-created"
+    delivery_type         = "PULL"
+    ack_deadline_seconds  = "60"
+    retention_duration    = "604800s"
+    message_ordering      = false
+    exactly_once_delivery = false
+    expiration_policy     = "31536000s"
+  },
+  "guild-deleted-member" = {
+    topic_name            = "guild-deleted"
+    delivery_type         = "PULL"
+    ack_deadline_seconds  = "60"
+    retention_duration    = "604800s"
+    message_ordering      = false
+    exactly_once_delivery = false
+    expiration_policy     = "31536000s"
+  },
+  "guild-deleted-role" = {
+    topic_name            = "guild-deleted"
+    delivery_type         = "PULL"
+    ack_deadline_seconds  = "60"
+    retention_duration    = "604800s"
+    message_ordering      = false
+    exactly_once_delivery = false
+    expiration_policy     = "31536000s"
+  }
 }
