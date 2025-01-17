@@ -70,3 +70,19 @@ resource "google_firestore_database" "guild-service" {
     google_firebase_project.firebase_project
   ]
 }
+
+resource "google_firestore_database" "member-service" {
+  location_id                       = var.region
+  project                           = var.project_id
+  name                              = "member-service"
+  type                              = "FIRESTORE_NATIVE"
+  concurrency_mode                  = "OPTIMISTIC"
+  app_engine_integration_mode       = "DISABLED"
+  point_in_time_recovery_enablement = "POINT_IN_TIME_RECOVERY_ENABLED"
+  delete_protection_state           = "DELETE_PROTECTION_DISABLED"
+  deletion_policy                   = "DELETE"
+
+  depends_on = [
+    google_firebase_project.firebase_project
+  ]
+}
