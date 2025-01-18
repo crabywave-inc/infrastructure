@@ -6,6 +6,7 @@ resource "google_cloudbuild_trigger" "trigger" {
   name        = "${var.service_name}-trigger-${var.environment}"
   description = "Trigger for ${var.service_name}"
   project     = var.project_id
+  location    = var.region
 
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
   service_account    = "projects/${var.project_id}/serviceAccounts/nathael-terraform@nathael-dev.iam.gserviceaccount.com"

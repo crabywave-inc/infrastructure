@@ -44,6 +44,16 @@ module "guild-service" {
   service_name = "guild-service"
 }
 
+module "member-service" {
+  source      = "./modules"
+  region      = var.region
+  project_id  = var.project_id
+  environment = var.environment
+
+  service_name = "member-service"
+}
+
+
 # resource "google_cloudbuild_trigger" "cloudbuild" {
 #   name = "role-service-trigger"
 #   project = var.project_id

@@ -51,3 +51,34 @@ module "auth-service" {
 
   vpc_connector = data.terraform_remote_state.network.outputs.run_connector_id
 }
+
+module "guild-service" {
+  source = "./modules/cloud_run"
+
+  project_id = var.project
+  region     = var.region
+  env        = var.environment
+
+  image_uri      = "europe-west1-docker.pkg.dev/nathael-dev/crabywave/guild-service:latest"
+  container_port = 8000
+  service_name   = "guild-service"
+
+  service_account_roles = [
+    "roles/datastore.user",
+    "roles/pubsub.editor"
+  ]
+
+  environment_variables = {
+    ENV                 = "production"
+    AUTH_SERVICE_URL    = "https://auth-service-${var.project_id}.${var.region}.run.app"
+    GOOGLE_PROJECT_ID   = var.project
+    FIREBASE_DATABASE   = "role-service"
+    FIREBASE_PROJECT_ID = "nathael-dev"
+  }
+
+  secrets = {}
+
+  vpc_connector = data.terraform_remote_state.network.outputs.run_connector_id
+
+
+}
