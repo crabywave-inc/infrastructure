@@ -64,6 +64,7 @@ resource "google_cloudbuild_trigger" "trigger" {
         "run", "deploy", var.service_name,
         "--image", "${local.service_repo}:$SHORT_SHA",
         "--platform", "managed",
+        "--region", var.region,
       ]
     }
 
