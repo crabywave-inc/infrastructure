@@ -57,6 +57,16 @@ resource "google_cloudbuild_trigger" "trigger" {
       ]
     }
 
+    // Deploy to Cloud Run
+    step {
+      name = "gcr.io/cloud-builders/gcloud"
+      args = [
+        "run", "deploy", var.service_name,
+        "--image", "${local.service_repo}:$SHORT_SHA",
+        "--platform", "managed",
+      ]
+    }
+
     options {
       logging     = "CLOUD_LOGGING_ONLY"
       worker_pool = "projects/${var.project_id}/locations/${var.region}/workerPools/cicd-pool"
